@@ -13,7 +13,7 @@
   <a href="https://github.com/dungngminh/submindo_web/actions/workflows/deploy.yml"><img src="https://github.com/dungngminh/submindo_web/actions/workflows/deploy.yml/badge.svg" alt="Deploy to GitHub Pages" /></a>
 </p>
 
-Landing page for [Submindo](https://dungngminh.github.io/submindo_web) — a subscription tracking app that uses AI to detect spending waste and find cheaper alternatives. Built with Astro 6 and a custom Neobrutalism design system.
+Landing page for [Submindo](https://submindo-web.vercel.app) — a subscription tracking app that uses AI to detect spending waste and find cheaper alternatives. Built with Astro 6 and a custom Neobrutalism design system.
 
 <p align="center">
   <img src="public/app-icon.png" alt="Submindo App" width="80" />
@@ -69,7 +69,7 @@ npm run dev
 
 Pushes to `main` automatically deploy to GitHub Pages via GitHub Actions.
 
-Live: **https://dungngminh.github.io/submindo_web**
+Live: **https://submindo-web.vercel.app**
 
 ## Built with
 
