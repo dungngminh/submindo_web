@@ -1,5 +1,8 @@
 ---
+import { fetchBrands, iconToImg } from '../lib/brands';
 const base = import.meta.env.BASE_URL;
+const rawBrands = await fetchBrands();
+const serviceCount = rawBrands.filter(b => iconToImg[b.icon]).length;
 ---
 
 <section class="hero section" id="home">
@@ -58,14 +61,14 @@ const base = import.meta.env.BASE_URL;
 
         <!-- App icon -->
         <div class="app-icon-wrap">
-          <img src={`${base}app-icon.png`} alt="Submindo app icon" width="140" height="140" loading="eager" />
+          <img src={`${base}app-icon.webp`} alt="Submindo app icon" width="140" height="140" loading="eager" decoding="sync" fetchpriority="high" />
         </div>
 
         <!-- Floating stat cards -->
         <div class="float-card fc-spend neo-card">
           <div class="fc-label">Monthly Spend</div>
-          <div class="fc-value">$127.40</div>
-          <div class="fc-sub">12 subscriptions tracked</div>
+          <div class="fc-value"><span data-target="12740" data-format="dollars">$0.00</span></div>
+          <div class="fc-sub"><span data-target="12">0</span> subscriptions tracked</div>
         </div>
 
         <div class="float-card fc-remind neo-card">
@@ -80,7 +83,7 @@ const base = import.meta.env.BASE_URL;
 
         <div class="float-card fc-ai neo-card-primary">
           <div class="fc-ai-label">AI Score</div>
-          <div class="fc-ai-score">87<span class="fc-ai-denom">/100</span></div>
+          <div class="fc-ai-score"><span data-target="87">0</span><span class="fc-ai-denom">/100</span></div>
           <div class="fc-ai-verdict">✅ Worth It</div>
         </div>
 
@@ -96,7 +99,7 @@ const base = import.meta.env.BASE_URL;
 <div class="stats-bar">
   <div class="container stats-inner">
     <div class="stat-item">
-      <span class="stat-num" data-target="63" data-suffix="+">0+</span>
+      <span class="stat-num" data-target={serviceCount} data-suffix="+">0+</span>
       <span class="stat-label">Supported Services</span>
     </div>
     <div class="stat-divider" aria-hidden="true"></div>
@@ -262,6 +265,18 @@ const base = import.meta.env.BASE_URL;
     color: var(--text-primary);
     line-height: 1;
   }
+  .fc-value [data-target], .fc-sub [data-target] {
+    display: inline-block;
+    font-variant-numeric: tabular-nums;
+    min-width: 2ch;
+    text-align: right;
+  }
+  .fc-ai-score [data-target] {
+    display: inline-block;
+    font-variant-numeric: tabular-nums;
+    min-width: 2ch;
+    text-align: right;
+  }
   .fc-sub {
     font-size: 11px;
     color: var(--text-secondary);
@@ -318,7 +333,6 @@ const base = import.meta.env.BASE_URL;
   .stats-bar {
     background: var(--bg);
     border-top: var(--border);
-    border-bottom: var(--border);
     padding: var(--sp-5) 0;
   }
   .stats-inner {
@@ -339,6 +353,10 @@ const base = import.meta.env.BASE_URL;
     font-weight: 800;
     color: var(--primary);
     line-height: 1;
+    font-variant-numeric: tabular-nums;
+    min-width: 2ch;
+    display: inline-block;
+    text-align: center;
   }
   .stat-label {
     font-size: var(--text-body2);
@@ -393,27 +411,40 @@ const base = import.meta.env.BASE_URL;
 <script>
   const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
 
-  const animateCount = (el: HTMLElement) => {
+  const animateEl = (el: HTMLElement) => {
     const target = parseInt(el.dataset.target ?? '0', 10);
     const suffix = el.dataset.suffix ?? '';
+    const isDollars = el.dataset.format === 'dollars';
     const duration = 1400;
     const start = performance.now();
     const step = (now: number) => {
       const t = Math.min((now - start) / duration, 1);
-      el.textContent = Math.round(easeOut(t) * target) + suffix;
+      const val = Math.round(easeOut(t) * target);
+      el.textContent = isDollars ? `$${(val / 100).toFixed(2)}` : val + suffix;
       if (t < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
   };
 
-  const obs = new IntersectionObserver((entries) => {
+  // Stats bar: observe each number individually
+  const statsObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        animateCount(entry.target as HTMLElement);
-        obs.unobserve(entry.target);
+        animateEl(entry.target as HTMLElement);
+        statsObs.unobserve(entry.target);
       }
     });
   }, { threshold: 0.4 });
+  document.querySelectorAll<HTMLElement>('.stat-num[data-target]').forEach(el => statsObs.observe(el));
 
-  document.querySelectorAll<HTMLElement>('.stat-num[data-target]').forEach(el => obs.observe(el));
+  // Float cards: trigger all numbers inside when card visible
+  const cardObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll<HTMLElement>('[data-target]').forEach(animateEl);
+        cardObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll<HTMLElement>('.fc-spend, .fc-ai').forEach(el => cardObs.observe(el));
 </script>

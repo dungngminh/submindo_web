@@ -49,12 +49,12 @@
           </div>
           <div class="score-main">
             <div class="score-ring">
-              <span class="score-number">87</span>
+              <span class="score-number" data-target="87">0</span>
               <span class="score-max">/100</span>
             </div>
             <div class="score-info">
               <span class="score-verdict">✅ Worth It</span>
-              <span class="score-detail">3 of 12 need review</span>
+              <span class="score-detail"><span data-target="3">0</span> of 12 need review</span>
             </div>
           </div>
           <div class="score-items">
@@ -73,7 +73,7 @@
           </div>
           <div class="score-saving">
             <span>💸 Potential savings:</span>
-            <strong>$23.99/mo</strong>
+            <strong><span data-target="2399" data-format="dollars">/mo</span></strong>
           </div>
         </div>
       </div>
@@ -84,6 +84,8 @@
 <style>
   .ai-section {
     padding: var(--sp-12) 0;
+    content-visibility: auto;
+    contain-intrinsic-size: 0 600px;
   }
 
   .ai-inner {
@@ -181,6 +183,10 @@
     font-weight: 800;
     color: var(--primary);
     line-height: 1;
+    font-variant-numeric: tabular-nums;
+    min-width: 2ch;
+    display: inline-block;
+    text-align: right;
   }
   .score-max {
     font-family: var(--font-display);
@@ -196,6 +202,18 @@
     color: var(--text-primary);
   }
   .score-detail { font-size: var(--text-body2); color: var(--text-secondary); }
+  .score-detail [data-target] {
+    display: inline-block;
+    min-width: 1ch;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+  .score-saving [data-target] {
+    display: inline-block;
+    min-width: 7ch;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
 
   .score-items {
     display: flex;
@@ -255,3 +273,35 @@
     .score-main { flex-direction: column; align-items: flex-start; }
   }
 </style>
+
+<script>
+  const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
+
+  const animateEl = (el: HTMLElement) => {
+    const target = parseInt(el.dataset.target ?? '0', 10);
+    const isDollars = el.dataset.format === 'dollars';
+    const duration = 1400;
+    const start = performance.now();
+    const step = (now: number) => {
+      const t = Math.min((now - start) / duration, 1);
+      const val = Math.round(easeOut(t) * target);
+      el.textContent = isDollars
+        ? `$${(val / 100).toFixed(2)}/mo`
+        : val.toString();
+      if (t < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll<HTMLElement>('[data-target]').forEach(animateEl);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const card = document.querySelector('.score-card');
+  if (card) obs.observe(card);
+</script>
