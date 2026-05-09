@@ -1,0 +1,463 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+/* ============================================================
+   SUBMINDO DESIGN SYSTEM — Neobrutalism
+   Colors, Typography, Spacing from app design_system/
+   ============================================================ */
+
+:root {
+  /* Colors — from Colors.kt */
+  --primary: #758AF9;
+  --primary-dark: #5A6FD8;
+  --primary-light: #EEF0FE;
+  --text-primary: #423F50;
+  --text-secondary: #7F778D;
+  --text-disabled: #DCDCDC;
+  --bg: #F8F6FA;
+  --surface: #F8F6FA;
+  --on-surface: #5C5968;
+  --error: #FF2C2C;
+  --success: #54CD83;
+  --stroke: #000000;
+  --white: #FFFFFF;
+
+  /* Neobrutalism — from BrutalistStyle.kt */
+  --border: 2px solid #000;
+  --shadow: 4px 4px 0 #000;
+  --shadow-sm: 2px 2px 0 #000;
+  --shadow-lg: 6px 6px 0 #000;
+  --radius: 10px;
+  --radius-lg: 16px;
+
+  /* Typography — from Typography.kt */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Manrope', sans-serif;
+
+  /* Type scale (sp → px 1:1) */
+  --text-display1: clamp(32px, 5vw, 48px);
+  --text-display2: clamp(28px, 4vw, 38px);
+  --text-h1: clamp(22px, 3vw, 28px);
+  --text-h2: clamp(20px, 2.5vw, 24px);
+  --text-title1: 20px;
+  --text-title2: 18px;
+  --text-body1: 16px;
+  --text-body2: 14px;
+
+  /* Spacing */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+  --sp-10: 40px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-20: 80px;
+  --sp-24: 96px;
+
+  --container: 1200px;
+  --nav-h: 68px;
+}
+
+/* ============ Reset ============ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-body1);
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  line-height: 1.15;
+  color: var(--text-primary);
+}
+
+/* ============ Layout ============ */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--sp-6);
+}
+
+.section {
+  padding: var(--sp-24) 0;
+}
+
+/* ============ Neo-brutalism Components ============ */
+
+/* Cards */
+.neo-card {
+  background: var(--white);
+  border: var(--border);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  padding: var(--sp-6);
+}
+
+.neo-card-surface {
+  background: var(--surface);
+  border: var(--border);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  padding: var(--sp-6);
+}
+
+.neo-card-primary {
+  background: var(--primary);
+  border: var(--border);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  padding: var(--sp-6);
+  color: var(--white);
+}
+
+.neo-card-dark {
+  background: var(--text-primary);
+  border: var(--border);
+  box-shadow: 4px 4px 0 var(--primary);
+  border-radius: var(--radius);
+  padding: var(--sp-6);
+  color: var(--white);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  padding: 14px var(--sp-6);
+  border: var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-body1);
+  line-height: 1;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 80ms ease, box-shadow 80ms ease;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.btn:hover {
+  transform: translate(2px, 2px);
+}
+
+.btn:active {
+  transform: translate(4px, 4px);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.btn-primary:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:active {
+  box-shadow: none;
+}
+
+.btn-dark {
+  background: var(--text-primary);
+  color: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.btn-dark:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-dark:active {
+  box-shadow: none;
+}
+
+.btn-outline {
+  background: var(--white);
+  color: var(--text-primary);
+  box-shadow: var(--shadow);
+}
+
+.btn-outline:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-outline:active {
+  box-shadow: none;
+}
+
+.btn-surface {
+  background: var(--surface);
+  color: var(--text-primary);
+  box-shadow: var(--shadow);
+}
+
+.btn-surface:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-surface:active {
+  box-shadow: none;
+}
+
+.btn-lg {
+  padding: 18px var(--sp-8);
+  font-size: var(--text-title2);
+}
+
+.btn-sm {
+  padding: 8px var(--sp-4);
+  font-size: var(--text-body2);
+}
+
+/* Badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border: var(--border);
+  border-radius: 6px;
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.badge-primary {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.badge-surface {
+  background: var(--surface);
+  color: var(--text-primary);
+}
+
+.badge-success {
+  background: var(--success);
+  color: var(--white);
+}
+
+.badge-dark {
+  background: var(--text-primary);
+  color: var(--white);
+}
+
+/* Section headings */
+.section-eyebrow {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-display2);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.section-desc {
+  font-size: var(--text-body1);
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+/* Divider */
+hr.neo-divider {
+  border: none;
+  border-top: var(--border);
+}
+
+/* Marquee */
+.marquee-wrapper {
+  overflow: hidden;
+  border-top: var(--border);
+  border-bottom: var(--border);
+  padding: var(--sp-4) 0;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+  gap: var(--sp-4);
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 6px var(--sp-4);
+  border: var(--border);
+  border-radius: 999px;
+  background: var(--white);
+  font-family: var(--font-display);
+  font-size: var(--text-body2);
+  font-weight: 600;
+  white-space: nowrap;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+/* Grid helpers */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-6);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-6);
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--sp-6);
+}
+
+/* Utility */
+.text-center {
+  text-align: center;
+}
+
+.text-primary-c {
+  color: var(--primary);
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.gap-2 {
+  gap: var(--sp-2);
+}
+
+.gap-4 {
+  gap: var(--sp-4);
+}
+
+.gap-6 {
+  gap: var(--sp-6);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: var(--sp-16) 0;
+  }
+
+  .container {
+    padding: 0 var(--sp-4);
+  }
+
+  .btn-lg {
+    padding: 14px var(--sp-6);
+    font-size: var(--text-body1);
+  }
+}

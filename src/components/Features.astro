@@ -1,0 +1,149 @@
+---
+const features = [
+  {
+    icon: '📋',
+    title: 'Track Every Subscription',
+    desc: 'Add any subscription with name, price, currency, billing cycle, and start date. Supports daily, weekly, monthly, and yearly billing cycles. Set trial periods so you never forget to cancel.',
+    tag: 'Core',
+  },
+  {
+    icon: '🔔',
+    title: 'Smart Bill Reminders',
+    desc: 'Never miss a renewal. Set a custom reminder days before your billing date and get push-notified right on time — no more unwanted charges hitting your account.',
+    tag: 'Reminders',
+  },
+  {
+    icon: '📅',
+    title: 'Billing Calendar',
+    desc: "See all upcoming charges laid out on a visual calendar. Spot heavy billing months at a glance and plan your budget before the charges hit.",
+    tag: 'Planning',
+  },
+  {
+    icon: '💰',
+    title: 'Expense Summary',
+    desc: 'View total subscription spending by day, week, month, or year. Instantly know exactly how much your subscriptions cost across any time frame.',
+    tag: 'Analytics',
+  },
+  {
+    icon: '📊',
+    title: 'AI Spending Analysis',
+    desc: "Get an efficiency score for your entire subscription portfolio. Submindo's AI detects overlapping plans, flags redundant services, and gives you a WORTH IT / BORDERLINE / NOT WORTH IT verdict.",
+    tag: 'AI',
+    highlight: true,
+  },
+  {
+    icon: '🤖',
+    title: 'AI Alternatives Finder',
+    desc: 'Already overpaying? For each subscription, Submindo finds cheaper plans that deliver the same value — with side-by-side price comparison and monthly savings calculation.',
+    tag: 'AI',
+    highlight: true,
+  },
+  {
+    icon: '📁',
+    title: '13 Spending Categories',
+    desc: 'Organize subscriptions by Entertainment, AI, Cloud, Finance, Health, Education, Productivity, Social Media, Telecom, Development, News, Utilities, and more.',
+    tag: 'Organization',
+  },
+  {
+    icon: '🕐',
+    title: 'Full Billing History',
+    desc: 'See the complete payment history for every subscription — always know what you paid, when you paid it, and what changed.',
+    tag: 'History',
+  },
+];
+---
+
+<section class="section" id="features">
+  <div class="container">
+    <!-- Header -->
+    <div class="features-header">
+      <p class="section-eyebrow">Everything you need</p>
+      <h2 class="section-title">Powerful features,<br>simple to use</h2>
+      <p class="section-desc" style="margin: 0 auto;">
+        From basic subscription tracking to AI-powered spending intelligence — Submindo covers every angle of your recurring expenses.
+      </p>
+    </div>
+
+    <!-- Grid -->
+    <div class="features-grid">
+      {features.map(f => (
+        <article class={`feature-card neo-card ${f.highlight ? 'feature-card--highlight' : ''}`}>
+          <div class="feature-top">
+            <span class="feature-icon" aria-hidden="true">{f.icon}</span>
+            <span class={`badge ${f.highlight ? 'badge-primary' : 'badge-surface'}`}>{f.tag}</span>
+          </div>
+          <h3 class="feature-title">{f.title}</h3>
+          <p class="feature-desc">{f.desc}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .features-header {
+    text-align: center;
+    margin-bottom: var(--sp-12);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+    align-items: center;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--sp-5);
+  }
+
+  .feature-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+    transition: transform 100ms, box-shadow 100ms;
+  }
+  .feature-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-lg);
+  }
+  .feature-card--highlight {
+    background: var(--primary-light, #EEF0FE);
+    border-color: var(--primary);
+    box-shadow: 4px 4px 0 var(--primary);
+  }
+  .feature-card--highlight:hover {
+    box-shadow: 6px 6px 0 var(--primary);
+  }
+
+  .feature-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .feature-icon { font-size: 32px; line-height: 1; }
+
+  .feature-title {
+    font-family: var(--font-display);
+    font-size: var(--text-title1);
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .feature-desc {
+    font-size: var(--text-body2);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  @media (max-width: 1100px) {
+    .features-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .features-header { margin-bottom: var(--sp-8); }
+    .features-grid { gap: var(--sp-4); }
+  }
+  @media (max-width: 640px) {
+    .features-grid { grid-template-columns: 1fr; gap: var(--sp-3); }
+    .features-header { margin-bottom: var(--sp-6); }
+  }
+</style>

@@ -1,0 +1,173 @@
+---
+---
+
+<section class="section about-section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-copy">
+        <p class="section-eyebrow">Behind the app</p>
+        <h2 class="section-title">Built by<br><span class="text-primary-c">KomKat Studio</span></h2>
+        <p class="about-desc">
+          KomKat Studio is an independent mobile app studio focused on building practical,
+          beautifully designed tools for everyday life.
+        </p>
+        <p class="about-desc">
+          Submindo was built because we were tired of subscription creep — silent recurring
+          charges that pile up month after month. We wanted a tracker that doesn't just show
+          you numbers, but actually helps you make better spending decisions.
+        </p>
+        <p class="about-desc">
+          We keep it simple: no accounts required, no data sold, no ads. Just a clean,
+          fast app that does what it says.
+        </p>
+
+        <div class="about-badges">
+          <div class="about-badge neo-card-surface">
+            <span class="about-badge-icon">🎯</span>
+            <span>Privacy-first</span>
+          </div>
+          <div class="about-badge neo-card-surface">
+            <span class="about-badge-icon">⚡</span>
+            <span>No account needed</span>
+          </div>
+          <div class="about-badge neo-card-surface">
+            <span class="about-badge-icon">🚫</span>
+            <span>No ads, ever</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-visual">
+        <div class="studio-card neo-card">
+          <div class="studio-logo">
+            <img src="/app-icon.png" alt="Submindo" width="80" height="80" loading="lazy" />
+          </div>
+          <div class="studio-name">Submindo</div>
+          <div class="studio-sub">by KomKat Studio</div>
+          <div class="studio-komkat">
+            <img src="/img_komkat.webp" alt="KomKat Studio" width="80" height="80" loading="lazy" class="komkat-logo" />
+          </div>
+          <hr class="neo-divider" style="margin: var(--sp-4) 0;" />
+          <div class="studio-stats">
+            <div class="studio-stat">
+              <span class="studio-stat-v">v1.0</span>
+              <span class="studio-stat-l">Version</span>
+            </div>
+            <div class="studio-stat">
+              <span class="studio-stat-v">iOS+Android</span>
+              <span class="studio-stat-l">Platform</span>
+            </div>
+            <div class="studio-stat">
+              <span class="studio-stat-v">Free</span>
+              <span class="studio-stat-l">Download</span>
+            </div>
+          </div>
+          <div class="studio-ctas">
+            <a href="#" class="btn btn-primary" style="width: 100%; justify-content: center;">
+              Get Submindo
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--sp-16);
+    align-items: center;
+  }
+
+  .about-desc {
+    font-size: var(--text-body1);
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: var(--sp-4);
+  }
+
+  .about-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--sp-3);
+    margin-top: var(--sp-6);
+  }
+  .about-badge {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    padding: var(--sp-3) var(--sp-4);
+    font-family: var(--font-display);
+    font-size: var(--text-body2);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .about-badge-icon { font-size: 18px; }
+
+  /* Studio card */
+  .studio-card { text-align: center; max-width: 320px; margin: 0 auto; }
+  .studio-logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--sp-4);
+  }
+  .studio-logo img {
+    border-radius: 20px;
+    border: var(--border);
+    box-shadow: var(--shadow);
+  }
+  .studio-komkat {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--sp-4);
+    padding-top: var(--sp-4);
+    border-top: var(--border);
+  }
+  .komkat-logo {
+    border-radius: 16px;
+    border: var(--border);
+    box-shadow: var(--shadow-sm);
+  }
+  .studio-name {
+    font-family: var(--font-display);
+    font-size: var(--text-headline2);
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+  .studio-sub {
+    font-size: var(--text-body2);
+    color: var(--text-secondary);
+    margin-top: 4px;
+    margin-bottom: 0;
+  }
+
+  .studio-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-2);
+    margin-bottom: var(--sp-5);
+    text-align: center;
+  }
+  .studio-stat { display: flex; flex-direction: column; gap: 4px; }
+  .studio-stat-v {
+    font-family: var(--font-display);
+    font-size: var(--text-body2);
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .studio-stat-l { font-size: 11px; color: var(--text-secondary); }
+
+  .studio-ctas { display: flex; flex-direction: column; gap: var(--sp-2); }
+
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: var(--sp-8); }
+    .studio-card { max-width: 100%; }
+  }
+  @media (max-width: 640px) {
+    .about-badges { gap: var(--sp-2); }
+    .about-badge { padding: var(--sp-2) var(--sp-3); }
+    .studio-stats { gap: var(--sp-1); }
+  }
+</style>

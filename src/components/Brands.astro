@@ -1,0 +1,206 @@
+---
+// Fetched at build time — source of truth for order, names, colors
+const res = await fetch('https://raw.githubusercontent.com/dungngminh/submindo_asset/refs/heads/master/type.json');
+const { data: rawBrands } = await res.json();
+
+// Map JSON icon slug → local webp path
+const iconToImg: Record<string, string> = {
+  'youtube-premium':        '/brands/img_youtube.webp',
+  'netflix':                '/brands/img_netflix.webp',
+  'gemini':                 '/brands/img_gemini.webp',
+  'chatgpt-plus':           '/brands/img_chat_gpt.webp',
+  'spotify':                '/brands/img_spotify.webp',
+  'apple-music':            '/brands/img_apple_music.webp',
+  'google-one':             '/brands/img_google_one.webp',
+  'icloud-plus':            '/brands/img_icloud.webp',
+  'microsoft-365':          '/brands/img_office_365.webp',
+  'amazon-prime':           '/brands/img_prime.webp',
+  'disney-plus':            '/brands/img_disney_plus.webp',
+  'apple-tv-plus':          '/brands/img_apple_tv_plus.webp',
+  'at-and-t':               '/brands/img_att.webp',
+  'audible':                '/brands/img_audible.webp',
+  'bumble-premium':         '/brands/img_bumble.webp',
+  'canva-pro':              '/brands/img_canva_pro.webp',
+  'discord-nitro':          '/brands/img_discord.webp',
+  'duolingo':               '/brands/img_duolingo.webp',
+  'ea-play':                '/brands/img_ea_play.webp',
+  'espn-plus':              '/brands/img_espn_plus.webp',
+  'figma-professional':     '/brands/img_figma.webp',
+  'grammarly-premium':      '/brands/img_grammarly.webp',
+  'hbo-max':                '/brands/img_hbo_max.webp',
+  'myfitnesspal':           '/brands/img_myfitnesspal.webp',
+  'nintendo-switch-online': '/brands/img_nintendo_switch_online.webp',
+  'nordvpn':                '/brands/img_nord.webp',
+  'notion-plus':            '/brands/img_notion_plus.webp',
+  'nyt':                    '/brands/img_nyt.webp',
+  'playstation-plus':       '/brands/img_ps_plus.webp',
+  'quickbooks':             '/brands/img_quickbooks.webp',
+  'siriusxm':               '/brands/img_siriusxm.webp',
+  't-mobile':               '/brands/img_tmobile.webp',
+  'tinder-gold':            '/brands/img_tinder.webp',
+  'twitch':                 '/brands/img_twitch.webp',
+  'verizon':                '/brands/img_verizon.webp',
+  'xbox-game-pass':         '/brands/img_xbox.webp',
+  'zoom':                   '/brands/img_zoom.webp',
+  '1password':              '/brands/img_1password.webp',
+  'bloomberg':              '/brands/img_bloomberg.webp',
+  'calm':                   '/brands/img_calm.webp',
+  'coursera':               '/brands/img_coursera.webp',
+  'crunchyroll':            '/brands/img_crunchyroll.webp',
+  'dropbox':                '/brands/img_dropbox.webp',
+  'evernote':               '/brands/img_evernote.webp',
+  'expressvpn':             '/brands/img_express.webp',
+  'fitbit-premium':         '/brands/img_fitbit.webp',
+  'github-copilot':         '/brands/img_github_copilot.webp',
+  'headspace':              '/brands/img_headspacae.webp',
+  'jetbrains':              '/brands/img_jetbrains.webp',
+  'lastpass':               '/brands/img_lastpass.webp',
+  'linkedin-learning':      '/brands/img_linkedin.webp',
+  'masterclass':            '/brands/img_masterclass.webp',
+  'medium-member':          '/brands/img_medium.webp',
+  'skillshare':             '/brands/img_skillshare.webp',
+  'starlink':               '/brands/img_starlink.webp',
+  'strava':                 '/brands/img_strava.webp',
+  'tradingview':            '/brands/img_tradingview.webp',
+  'udemy':                  '/brands/img_udemy.webp',
+  'vercel':                 '/brands/img_vercel.webp',
+  'wsj':                    '/brands/img_wsj.webp',
+  'ynab':                   '/brands/img_ynab.webp',
+};
+
+const brands = rawBrands.map((b: { name: string; color: string; icon: string }) => ({
+  name:  b.name,
+  color: b.color,
+  img:   iconToImg[b.icon] ?? null,
+}));
+
+const withImg = brands.filter((b: { name: string; color: string; img: string | null }) => b.img);
+const half = Math.ceil(withImg.length / 2);
+const row1 = withImg.slice(0, half);
+const row2 = withImg.slice(half);
+---
+
+<div class="brands-section">
+  <p class="brands-label">{withImg.length}+ services supported out of the box</p>
+
+  <!-- Row 1: scroll left -->
+  <div class="brands-track-wrap">
+    <div class="brands-track track-left">
+      {[...row1, ...row1].map((b: { name: string; color: string; img: string | null }) => (
+        <div class="brand-tile" data-name={b.name}>
+          <img src={b.img!} alt={b.name} width="52" height="52" loading="lazy" class="brand-img" />
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Row 2: scroll right -->
+  <div class="brands-track-wrap" style="margin-top: var(--sp-3);">
+    <div class="brands-track track-right">
+      {[...row2, ...row2].map((b: { name: string; color: string; img: string | null }) => (
+        <div class="brand-tile" data-name={b.name}>
+          <img src={b.img!} alt={b.name} width="52" height="52" loading="lazy" class="brand-img" />
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .brands-section {
+    padding: var(--sp-10) 0;
+    background: var(--surface);
+    border-top: var(--border);
+    border-bottom: var(--border);
+    overflow: hidden;
+  }
+
+  .brands-label {
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: var(--text-body2);
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: var(--sp-6);
+    letter-spacing: 0.3px;
+  }
+
+  .brands-track-wrap { overflow: hidden; padding: 4px 0; }
+
+  .brands-track {
+    display: flex;
+    gap: var(--sp-3);
+    width: max-content;
+  }
+  .track-left  { animation: scroll-left  45s linear infinite; }
+  .track-right { animation: scroll-right 38s linear infinite; }
+  .brands-track:hover { animation-play-state: paused; }
+
+  @keyframes scroll-left  { from { transform: translateX(0); }    to { transform: translateX(-50%); } }
+  @keyframes scroll-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+
+  .brand-tile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    background: #fff;
+    border: var(--border);
+    border-radius: var(--radius);
+    box-shadow: 3px 3px 0 #000;
+    flex-shrink: 0;
+    cursor: default;
+    transition: transform 80ms, box-shadow 80ms;
+  }
+  .brand-tile:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: var(--shadow);
+  }
+
+
+.brand-img {
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+    border-radius: 6px;
+  }
+
+</style>
+
+<script>
+  const tip = document.createElement('div');
+  Object.assign(tip.style, {
+    position: 'fixed',
+    zIndex: '9999',
+    background: '#423F50',
+    color: '#fff',
+    fontFamily: "'Space Grotesk', sans-serif",
+    fontSize: '11px',
+    fontWeight: '700',
+    whiteSpace: 'nowrap',
+    padding: '4px 10px',
+    borderRadius: '6px',
+    border: '1.5px solid #000',
+    boxShadow: '2px 2px 0 #000',
+    pointerEvents: 'none',
+    opacity: '0',
+    transition: 'opacity 100ms',
+    transform: 'translateX(-50%)',
+  });
+  document.body.appendChild(tip);
+
+  document.querySelectorAll<HTMLElement>('[data-name]').forEach(tile => {
+    tile.addEventListener('mouseenter', () => {
+      tip.textContent = tile.dataset.name ?? '';
+      const r = tile.getBoundingClientRect();
+      tip.style.left = (r.left + r.width / 2) + 'px';
+      tip.style.top  = (r.top - 36) + 'px';
+      tip.style.opacity = '1';
+    });
+    tile.addEventListener('mouseleave', () => {
+      tip.style.opacity = '0';
+    });
+  });
+</script>

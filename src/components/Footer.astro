@@ -1,0 +1,159 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <!-- Brand -->
+    <div class="footer-brand">
+      <a href="/" class="footer-logo">
+        <img src="/app-icon.png" alt="Submindo" width="32" height="32" loading="lazy" />
+        <span class="footer-logo-name">Submindo</span>
+      </a>
+      <p class="footer-tagline">
+        Track subscriptions. Cut waste. No surprises.
+      </p>
+      <p class="footer-studio">
+        Made with 🖤 by <strong>KomKat Studio</strong>
+      </p>
+    </div>
+
+    <!-- Links -->
+    <nav class="footer-nav" aria-label="Footer navigation">
+      <div class="footer-nav-col">
+        <span class="footer-nav-heading">Product</span>
+        <ul>
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/#how-it-works">How it works</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-col">
+        <span class="footer-nav-heading">Download</span>
+        <ul>
+          <li><a href="#">App Store</a></li>
+          <li><a href="#">Google Play</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav-col">
+        <span class="footer-nav-heading">Legal</span>
+        <ul>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/terms">Terms of Service</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p class="footer-copy">
+        &copy; {year} KomKat Studio. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--white);
+    border-top: var(--border);
+    color: var(--text-primary);
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1.5fr 2fr;
+    gap: var(--sp-12);
+    padding-top: var(--sp-12);
+    padding-bottom: var(--sp-12);
+  }
+
+  /* Brand */
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    margin-bottom: var(--sp-4);
+  }
+  .footer-logo img {
+    border-radius: 8px;
+    border: var(--border);
+  }
+  .footer-logo-name {
+    font-family: var(--font-display);
+    font-size: var(--text-title1);
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .footer-tagline {
+    font-size: var(--text-body2);
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 240px;
+    margin-bottom: var(--sp-4);
+  }
+  .footer-studio {
+    font-size: var(--text-body2);
+    color: var(--text-secondary);
+  }
+  .footer-studio strong { color: var(--text-primary); }
+
+  /* Nav */
+  .footer-nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-6);
+  }
+  .footer-nav-col { display: flex; flex-direction: column; gap: var(--sp-3); }
+  .footer-nav-heading {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: var(--sp-1);
+  }
+  .footer-nav-col ul { display: flex; flex-direction: column; gap: var(--sp-2); list-style: none; }
+  .footer-nav-col a {
+    font-size: var(--text-body2);
+    color: var(--text-secondary);
+    transition: color 120ms;
+  }
+  .footer-nav-col a:hover { color: var(--primary); }
+
+  /* Bottom bar */
+  .footer-bottom {
+    border-top: var(--border);
+  }
+  .footer-bottom-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--sp-4);
+    padding-bottom: var(--sp-4);
+    gap: var(--sp-4);
+    flex-wrap: wrap;
+  }
+  .footer-copy { font-size: 12px; color: var(--text-secondary); }
+  .footer-legal-links {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    font-size: 12px;
+  }
+  .footer-legal-links a { color: var(--text-secondary); transition: color 120ms; }
+  .footer-legal-links a:hover { color: var(--primary); }
+  .footer-legal-links span { color: var(--text-disabled); }
+
+  @media (max-width: 768px) {
+    .footer-inner { grid-template-columns: 1fr; gap: var(--sp-8); }
+    .footer-nav { grid-template-columns: repeat(2, 1fr); }
+    .footer-bottom-inner { flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 480px) {
+    .footer-nav { grid-template-columns: 1fr; }
+  }
+</style>

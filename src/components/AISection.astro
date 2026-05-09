@@ -1,0 +1,257 @@
+---
+---
+
+<section class="ai-section">
+  <div class="container">
+    <div class="ai-inner neo-card-dark">
+      <div class="ai-copy">
+        <span class="badge badge-primary" style="margin-bottom: var(--sp-4);">🤖 AI-Powered</span>
+        <h2 class="ai-title">
+          Your Personal<br>
+          <span class="ai-title-accent">Spending Analyst</span>
+        </h2>
+        <p class="ai-desc">
+          Most subscription trackers just show you what you spend. Submindo tells you
+          if it's worth it — and finds cheaper alternatives when it's not.
+        </p>
+
+        <ul class="ai-points">
+          <li class="ai-point">
+            <span class="ai-point-icon">📊</span>
+            <div>
+              <strong>Efficiency Scoring</strong>
+              <p>Every subscription gets an AI efficiency score. Know exactly which services are earning their keep.</p>
+            </div>
+          </li>
+          <li class="ai-point">
+            <span class="ai-point-icon">🔍</span>
+            <div>
+              <strong>Redundancy Detection</strong>
+              <p>AI spots overlapping services — like paying for both Spotify and Apple Music — and flags what to cut.</p>
+            </div>
+          </li>
+          <li class="ai-point">
+            <span class="ai-point-icon">💡</span>
+            <div>
+              <strong>Cheaper Alternative Finder</strong>
+              <p>Side-by-side price comparison with monthly savings calculation so you can switch confidently.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="ai-visual" aria-hidden="true">
+        <!-- Score card -->
+        <div class="score-card neo-card">
+          <div class="score-header">
+            <span class="score-label">Portfolio Analysis</span>
+            <span class="badge badge-success">Complete</span>
+          </div>
+          <div class="score-main">
+            <div class="score-ring">
+              <span class="score-number">87</span>
+              <span class="score-max">/100</span>
+            </div>
+            <div class="score-info">
+              <span class="score-verdict">✅ Worth It</span>
+              <span class="score-detail">3 of 12 need review</span>
+            </div>
+          </div>
+          <div class="score-items">
+            <div class="score-item">
+              <span class="score-item-name">Netflix</span>
+              <span class="score-item-verdict verdict-ok">Worth It</span>
+            </div>
+            <div class="score-item">
+              <span class="score-item-name">Hulu</span>
+              <span class="score-item-verdict verdict-border">Borderline</span>
+            </div>
+            <div class="score-item">
+              <span class="score-item-name">HBO Max</span>
+              <span class="score-item-verdict verdict-no">Not Worth It</span>
+            </div>
+          </div>
+          <div class="score-saving">
+            <span>💸 Potential savings:</span>
+            <strong>$23.99/mo</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ai-section {
+    padding: var(--sp-12) 0;
+  }
+
+  .ai-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-12);
+    align-items: center;
+    padding: var(--sp-12);
+    background-color: var(--surface);
+    box-shadow: 6px 6px 0 var(--shadow-sm);
+  }
+
+  /* Copy */
+  .ai-title {
+    font-size: var(--text-display2);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: var(--sp-4);
+    line-height: 1.1;
+  }
+  .ai-title-accent { color: var(--primary); }
+
+  .ai-desc {
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+    color: var(--text-primary);
+    margin-bottom: var(--sp-8);
+    font-size: var(--text-body1);
+  }
+
+  .ai-points {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-5);
+    list-style: none;
+  }
+  .ai-point {
+    display: flex;
+    gap: var(--sp-4);
+    align-items: flex-start;
+    color: var(--text-primary);
+  }
+  .ai-point-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+  .ai-point strong {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .ai-point p {
+    font-size: var(--text-body2);
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  /* Score card visual */
+  .score-card {
+    max-width: 340px;
+    padding: var(--sp-5);
+  }
+  .score-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--sp-5);
+  }
+  .score-label {
+    font-family: var(--font-display);
+    font-size: var(--text-body2);
+    font-weight: 700;
+    color: var(--text-secondary);
+  }
+
+  .score-main {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-5);
+    margin-bottom: var(--sp-5);
+  }
+  .score-ring {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    background: var(--primary-light, #EEF0FE);
+    border: var(--border);
+    border-radius: var(--radius);
+    padding: var(--sp-4) var(--sp-5);
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
+  }
+  .score-number {
+    font-family: var(--font-display);
+    font-size: 42px;
+    font-weight: 800;
+    color: var(--primary);
+    line-height: 1;
+  }
+  .score-max {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+  .score-info { display: flex; flex-direction: column; gap: var(--sp-1); }
+  .score-verdict {
+    font-family: var(--font-display);
+    font-size: var(--text-title1);
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .score-detail { font-size: var(--text-body2); color: var(--text-secondary); }
+
+  .score-items {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-2);
+    border: var(--border);
+    border-radius: var(--radius);
+    padding: var(--sp-3);
+    margin-bottom: var(--sp-4);
+    background: var(--surface);
+  }
+  .score-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: var(--text-body2);
+  }
+  .score-item-name { font-weight: 600; color: var(--text-primary); }
+  .score-item-verdict {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1.5px solid currentColor;
+  }
+  .verdict-ok     { color: var(--success); }
+  .verdict-border { color: #F59E0B; }
+  .verdict-no     { color: var(--error); }
+
+  .score-saving {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: var(--text-body2);
+    color: var(--text-secondary);
+    background: var(--surface);
+    border: var(--border);
+    border-radius: var(--radius);
+    padding: var(--sp-3) var(--sp-4);
+  }
+  .score-saving strong {
+    font-family: var(--font-display);
+    font-size: var(--text-title2);
+    font-weight: 700;
+    color: var(--success);
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .ai-inner { grid-template-columns: 1fr; gap: var(--sp-8); padding: var(--sp-8); }
+    .score-card { max-width: 100%; }
+  }
+  @media (max-width: 640px) {
+    .ai-inner { padding: var(--sp-5); gap: var(--sp-6); }
+    .ai-title { font-size: clamp(24px, 6vw, 32px); }
+    .score-main { flex-direction: column; align-items: flex-start; }
+  }
+</style>
