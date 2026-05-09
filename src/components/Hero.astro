@@ -96,12 +96,12 @@ const base = import.meta.env.BASE_URL;
 <div class="stats-bar">
   <div class="container stats-inner">
     <div class="stat-item">
-      <span class="stat-num">63+</span>
+      <span class="stat-num" data-target="63" data-suffix="+">0+</span>
       <span class="stat-label">Supported Services</span>
     </div>
     <div class="stat-divider" aria-hidden="true"></div>
     <div class="stat-item">
-      <span class="stat-num">13</span>
+      <span class="stat-num" data-target="13">0</span>
       <span class="stat-label">Spending Categories</span>
     </div>
     <div class="stat-divider" aria-hidden="true"></div>
@@ -111,7 +111,7 @@ const base = import.meta.env.BASE_URL;
     </div>
     <div class="stat-divider" aria-hidden="true"></div>
     <div class="stat-item">
-      <span class="stat-num">0</span>
+      <span class="stat-num" data-target="0">0</span>
       <span class="stat-label">Forgotten Bills</span>
     </div>
   </div>
@@ -389,3 +389,31 @@ const base = import.meta.env.BASE_URL;
     }
   }
 </style>
+
+<script>
+  const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
+
+  const animateCount = (el: HTMLElement) => {
+    const target = parseInt(el.dataset.target ?? '0', 10);
+    const suffix = el.dataset.suffix ?? '';
+    const duration = 1400;
+    const start = performance.now();
+    const step = (now: number) => {
+      const t = Math.min((now - start) / duration, 1);
+      el.textContent = Math.round(easeOut(t) * target) + suffix;
+      if (t < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCount(entry.target as HTMLElement);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  document.querySelectorAll<HTMLElement>('.stat-num[data-target]').forEach(el => obs.observe(el));
+</script>

@@ -16,7 +16,7 @@ const iconToImg: Record<string, string> = {
   'apple-music':            '/brands/img_apple_music.webp',
   'google-one':             '/brands/img_google_one.webp',
   'icloud-plus':            '/brands/img_icloud.webp',
-  'microsoft-365':          '/brands/img_office_365.webp',
+  'microsoft-365':          '/brands/img_ms365.webp',
   'amazon-prime':           '/brands/img_prime.webp',
   'disney-plus':            '/brands/img_disney_plus.webp',
   'apple-tv-plus':          '/brands/img_apple_tv_plus.webp',
@@ -84,7 +84,7 @@ const row2 = withImg.slice(half);
 ---
 
 <div class="brands-section">
-  <p class="brands-label">{withImg.length}+ services supported out of the box</p>
+  <p class="brands-label"><span class="count-num" data-target={withImg.length}>0</span>+ services supported out of the box</p>
 
   <!-- Row 1: scroll left -->
   <div class="brands-track-wrap">
@@ -173,6 +173,33 @@ const row2 = withImg.slice(half);
 </style>
 
 <script>
+  // Count-up animation
+  const countEl = document.querySelector<HTMLElement>('.count-num');
+  if (countEl) {
+    const target = parseInt(countEl.dataset.target ?? '0', 10);
+    const duration = 1400;
+    let started = false;
+
+    const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
+
+    const run = () => {
+      if (started) return;
+      started = true;
+      const start = performance.now();
+      const step = (now: number) => {
+        const t = Math.min((now - start) / duration, 1);
+        countEl.textContent = Math.round(easeOut(t) * target).toString();
+        if (t < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) { run(); obs.disconnect(); }
+    }, { threshold: 0.3 });
+    obs.observe(countEl);
+  }
+
   const tip = document.createElement('div');
   Object.assign(tip.style, {
     position: 'fixed',
