@@ -1,4 +1,5 @@
 ---
+const base = import.meta.env.BASE_URL;
 const nav = [
   { label: 'Home',     href: '/#home' },
   { label: 'Features', href: '/#features' },
@@ -11,7 +12,7 @@ const nav = [
   <div class="container navbar-inner">
     <!-- Logo -->
     <a href="/" class="navbar-logo">
-      <img src="/app-icon.png" alt="Submindo" width="36" height="36" loading="eager" />
+      <img src={`${base}app-icon.png`} alt="Submindo" width="36" height="36" loading="eager" />
       <span class="brand-name">Submindo</span>
     </a>
 

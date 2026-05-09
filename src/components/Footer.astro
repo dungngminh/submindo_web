@@ -1,4 +1,5 @@
 ---
+const base = import.meta.env.BASE_URL;
 const year = new Date().getFullYear();
 ---
 
@@ -7,7 +8,7 @@ const year = new Date().getFullYear();
     <!-- Brand -->
     <div class="footer-brand">
       <a href="/" class="footer-logo">
-        <img src="/app-icon.png" alt="Submindo" width="32" height="32" loading="lazy" />
+        <img src={`${base}app-icon.png`} alt="Submindo" width="32" height="32" loading="lazy" />
         <span class="footer-logo-name">Submindo</span>
       </a>
       <p class="footer-tagline">

@@ -7,10 +7,11 @@ interface Props {
   ogImage?: string;
 }
 
+const base = import.meta.env.BASE_URL;
 const {
   title = 'Submindo — Subscription Tracker & Reminder',
   description = 'Track subscriptions. AI finds waste & cheaper alternatives. No bill surprises. Never miss a renewal again.',
-  ogImage = '/app-icon.png',
+  ogImage = `${base}app-icon.png`,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://submindo.app');
@@ -42,8 +43,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://submindo
     <meta name="twitter:image"       content={ogImage} />
 
     <!-- Favicons -->
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="icon" type="image/png" href={`${base}favicon.png`} />
+    <link rel="apple-touch-icon" href={`${base}favicon.png`} />
 
     <!-- Fonts — preconnect for speed -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

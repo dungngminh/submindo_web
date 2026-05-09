@@ -3,6 +3,9 @@
 const res = await fetch('https://raw.githubusercontent.com/dungngminh/submindo_asset/refs/heads/master/type.json');
 const { data: rawBrands } = await res.json();
 
+const base = import.meta.env.BASE_URL;
+const b2url = (path: string) => `${base}${path.replace(/^\//, '')}`;
+
 // Map JSON icon slug → local webp path
 const iconToImg: Record<string, string> = {
   'youtube-premium':        '/brands/img_youtube.webp',
@@ -88,7 +91,7 @@ const row2 = withImg.slice(half);
     <div class="brands-track track-left">
       {[...row1, ...row1].map((b: { name: string; color: string; img: string | null }) => (
         <div class="brand-tile" data-name={b.name}>
-          <img src={b.img!} alt={b.name} width="52" height="52" loading="lazy" class="brand-img" />
+          <img src={b2url(b.img!)} alt={b.name} width="52" height="52" loading="lazy" class="brand-img" />
         </div>
       ))}
     </div>
@@ -99,7 +102,7 @@ const row2 = withImg.slice(half);
     <div class="brands-track track-right">
       {[...row2, ...row2].map((b: { name: string; color: string; img: string | null }) => (
         <div class="brand-tile" data-name={b.name}>
-          <img src={b.img!} alt={b.name} width="52" height="52" loading="lazy" class="brand-img" />
+          <img src={b2url(b.img!)} alt={b.name} width="52" height="52" loading="lazy" class="brand-img" />
         </div>
       ))}
     </div>
