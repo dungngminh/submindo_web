@@ -14,10 +14,6 @@
 
 Landing page for [Submindo](https://submindo-web.vercel.app) — a subscription tracking app that uses AI to detect spending waste and find cheaper alternatives. Built with Astro 6 and a custom Neobrutalism design system.
 
-<p align="center">
-  <img src="public/app-icon.png" alt="Submindo App" width="80" />
-</p>
-
 ## Features
 
 - **Neobrutalism Design** — Custom design system matching the app's visual identity
