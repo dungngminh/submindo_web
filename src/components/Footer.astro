@@ -1,4 +1,6 @@
 ---
+import { siteConfig } from '../lib/config';
+
 const base = import.meta.env.BASE_URL;
 const year = new Date().getFullYear();
 ---
@@ -34,7 +36,7 @@ const year = new Date().getFullYear();
         <span class="footer-nav-heading">Download</span>
         <ul>
           <li><a href="#">App Store</a></li>
-          <li><a href="#">Google Play</a></li>
+          <li><a href={siteConfig.googlePlayUrl}>Google Play</a></li>
         </ul>
       </div>
       <div class="footer-nav-col">
