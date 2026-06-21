@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "Marcus Webb",
+    "username": "marcuswebb_tech",
+    "country": "🇺🇸",
+    "avatar_emoji": "👨‍💻",
+    "avatar_bg": "#EEF0FE",
+    "rating": 5,
+    "text": "Finally found an app that actually tells me if my subscriptions are worth keeping. The AI scoring caught that I was paying for both Hulu and Disney+ with massive overlap. Saved $18/mo instantly.",
+    "feature_tag": "AI Scoring",
+    "date": "2025-11-04"
+  },
+  {
+    "id": 2,
+    "name": "Nguyễn Thị Lan",
+    "username": "lan.nguyen_vn",
+    "country": "🇻🇳",
+    "avatar_emoji": "👩",
+    "avatar_bg": "#FFF0F6",
+    "rating": 5,
+    "text": "Ứng dụng rất dễ dùng và theo dõi được hơn 60 dịch vụ phổ biến. Tôi không còn bị quên gia hạn nữa nhờ nhắc nhở trước 3 ngày. Thiết kế đẹp mắt!",
+    "feature_tag": "Reminders",
+    "date": "2025-10-29"
+  },
+  {
+    "id": 3,
+    "name": "Sophie Laurent",
+    "username": "sophie.l",
+    "country": "🇫🇷",
+    "avatar_emoji": "👩‍🎨",
+    "avatar_bg": "#FFF9E6",
+    "rating": 5,
+    "text": "The calendar view is brilliant — I can see every billing date laid out for the whole month. No more surprises at the end of the month when charges stack up.",
+    "feature_tag": "Calendar View",
+    "date": "2025-12-01"
+  },
+  {
+    "id": 4,
+    "name": "Trần Minh Khoa",
+    "username": "khoa_tran",
+    "country": "🇻🇳",
+    "avatar_emoji": "🧑‍💼",
+    "avatar_bg": "#E8F9F0",
+    "rating": 4,
+    "text": "Submindo theo dõi được tất cả các gói của tôi từ Netflix đến ChatGPT Plus. Phần AI gợi ý các dịch vụ rẻ hơn thực sự hữu ích và tiết kiệm kha khá.",
+    "feature_tag": "AI Alternatives",
+    "date": "2025-11-18"
+  },
+  {
+    "id": 5,
+    "name": "Aiden Park",
+    "username": "aiden.p.kr",
+    "country": "🇰🇷",
+    "avatar_emoji": "👨‍🎮",
+    "avatar_bg": "#EEF0FE",
+    "rating": 5,
+    "text": "Tracked 14 subscriptions across entertainment, cloud and dev tools. The yearly expense summary made me realize I was spending over $2,400/yr on subscriptions I barely use.",
+    "feature_tag": "Expense Summary",
+    "date": "2025-10-10"
+  },
+  {
+    "id": 6,
+    "name": "Priya Sharma",
+    "username": "priya.sharma",
+    "country": "🇮🇳",
+    "avatar_emoji": "👩‍💻",
+    "avatar_bg": "#FFF0F6",
+    "rating": 5,
+    "text": "The AI alternatives finder recommended a cheaper plan for Adobe Creative Cloud and showed me side-by-side pricing. Switched immediately and saved $12 a month.",
+    "feature_tag": "AI Analysis",
+    "date": "2025-11-27"
+  },
+  {
+    "id": 7,
+    "name": "Lê Hoàng Nam",
+    "username": "hoangnam.le",
+    "country": "🇻🇳",
+    "avatar_emoji": "🧑‍🎓",
+    "avatar_bg": "#E8F9F0",
+    "rating": 5,
+    "text": "Thích nhất là không cần tạo tài khoản mà vẫn dùng được đầy đủ tính năng. Nhắc nhở trước khi thanh toán giúp tôi tránh bị trừ tiền khi đang trong thời gian thử miễn phí.",
+    "feature_tag": "Trial Tracking",
+    "date": "2025-12-08"
+  },
+  {
+    "id": 8,
+    "name": "Emma Johansson",
+    "username": "emma.j.design",
+    "country": "🇸🇪",
+    "avatar_emoji": "👩‍🎤",
+    "avatar_bg": "#FFF9E6",
+    "rating": 5,
+    "text": "I love how subscriptions are organized into 13 categories. Having Entertainment, Productivity, and AI tools all sorted makes it so easy to see where my money actually goes.",
+    "feature_tag": "Categories",
+    "date": "2025-10-22"
+  },
+  {
+    "id": 9,
+    "name": "Carlos Méndez",
+    "username": "carlos.m.mx",
+    "country": "🇲🇽",
+    "avatar_emoji": "👨‍🍳",
+    "avatar_bg": "#EEF0FE",
+    "rating": 4,
+    "text": "Been using Submindo for 4 months. The billing history feature is really useful to look back and see exactly when charges happened and how prices changed over time.",
+    "feature_tag": "Billing History",
+    "date": "2025-11-13"
+  },
+  {
+    "id": 10,
+    "name": "Phạm Thu Hương",
+    "username": "thuhuong_pham",
+    "country": "🇻🇳",
+    "avatar_emoji": "👩‍🌾",
+    "avatar_bg": "#E8F9F0",
+    "rating": 5,
+    "text": "Submindo thực sự thay đổi cách tôi quản lý chi tiêu. Điểm AI cho thấy gói nào Worth It và gói nào Not Worth It rất rõ ràng. Tôi đã cắt giảm được 3 gói không cần thiết.",
+    "feature_tag": "60+ Services",
+    "date": "2025-12-14"
+  }
+]

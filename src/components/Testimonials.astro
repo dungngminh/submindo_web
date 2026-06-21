@@ -1,0 +1,226 @@
+---
+import testimonials from '../data/testimonials.json';
+
+const row1 = testimonials.slice(0, 5);
+const row2 = testimonials.slice(5);
+---
+
+<section class="testimonials-section" id="testimonials">
+  <div class="container">
+    <div class="t-header">
+      <span class="badge badge-primary">⭐ What users say</span>
+      <h2 class="section-title">Loved by thousands</h2>
+      <p class="section-desc t-desc">
+        Real users. Real savings. See what Submindo users are saying.
+      </p>
+      <div class="t-stat">
+        <span class="t-stars" aria-hidden="true">★★★★★</span>
+        <span class="t-stat-text">4.9 out of 5 · 2,000+ reviews</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="t-track-wrap">
+    <div class="t-track track-left">
+      {[...row1, ...row1].map(t => (
+        <article class="t-card neo-card">
+          <div class="t-avatar" style={`background: ${t.avatar_bg}`} aria-hidden="true">
+            <span>{t.avatar_emoji}</span>
+          </div>
+          <div class="t-meta">
+            <div class="t-name">{t.name} {t.country}</div>
+            <div class="t-username">@{t.username}</div>
+          </div>
+          <div class="t-rating" aria-label={`${t.rating} out of 5 stars`}>
+            {'★'.repeat(t.rating)}{'☆'.repeat(5 - t.rating)}
+          </div>
+          <p class="t-text">{t.text}</p>
+          <span class="badge badge-surface t-badge">{t.feature_tag}</span>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <div class="t-track-wrap" style="margin-top: var(--sp-4);">
+    <div class="t-track track-right">
+      {[...row2, ...row2].map(t => (
+        <article class="t-card neo-card">
+          <div class="t-avatar" style={`background: ${t.avatar_bg}`} aria-hidden="true">
+            <span>{t.avatar_emoji}</span>
+          </div>
+          <div class="t-meta">
+            <div class="t-name">{t.name} {t.country}</div>
+            <div class="t-username">@{t.username}</div>
+          </div>
+          <div class="t-rating" aria-label={`${t.rating} out of 5 stars`}>
+            {'★'.repeat(t.rating)}{'☆'.repeat(5 - t.rating)}
+          </div>
+          <p class="t-text">{t.text}</p>
+          <span class="badge badge-surface t-badge">{t.feature_tag}</span>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials-section {
+    padding: var(--sp-24) 0;
+    overflow: hidden;
+    background: var(--surface);
+    border-top: var(--border);
+    border-bottom: var(--border);
+    content-visibility: auto;
+    contain-intrinsic-size: 0 700px;
+  }
+
+  .t-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: var(--sp-4);
+    margin-bottom: var(--sp-10);
+  }
+
+  .t-desc {
+    max-width: 520px;
+  }
+
+  .t-stat {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-3);
+    padding: var(--sp-3) var(--sp-5);
+    border: var(--border);
+    border-radius: 999px;
+    background: var(--bg);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .t-stars {
+    color: #F59E0B;
+    font-size: 18px;
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+
+  .t-stat-text {
+    font-family: var(--font-display);
+    font-size: var(--text-body2);
+    font-weight: 700;
+    color: var(--text-secondary);
+  }
+
+  /* Marquee tracks */
+  .t-track-wrap {
+    overflow: hidden;
+    padding: 6px 0;
+  }
+
+  .t-track {
+    display: flex;
+    gap: var(--sp-4);
+    width: max-content;
+  }
+
+  .track-left  { animation: t-scroll-left  55s linear infinite; will-change: transform; }
+  .track-right { animation: t-scroll-right 48s linear infinite; will-change: transform; }
+  .t-track:hover { animation-play-state: paused; }
+
+  @keyframes t-scroll-left {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @keyframes t-scroll-right {
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0); }
+  }
+
+  /* Card */
+  .t-card {
+    flex-shrink: 0;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+    cursor: default;
+    transition: transform 80ms, box-shadow 80ms;
+  }
+
+  .t-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Avatar */
+  .t-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: var(--border);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    flex-shrink: 0;
+    user-select: none;
+  }
+
+  /* Name / username */
+  .t-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .t-name {
+    font-family: var(--font-display);
+    font-size: var(--text-body1);
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+  }
+
+  .t-username {
+    font-size: var(--text-body2);
+    color: var(--text-secondary);
+  }
+
+  /* Stars */
+  .t-rating {
+    color: #F59E0B;
+    font-size: 15px;
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+
+  /* Review text */
+  .t-text {
+    font-size: var(--text-body2);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Feature tag badge — pinned to bottom */
+  .t-badge {
+    align-self: flex-start;
+    margin-top: auto;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .t-card { width: 280px; }
+    .t-header { margin-bottom: var(--sp-8); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .t-track { animation: none; }
+  }
+</style>
